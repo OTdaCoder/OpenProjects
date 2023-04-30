@@ -2,7 +2,6 @@ import os
 import openai
 import sys
 openai.api_key = os.getenv('OPENAI_API_KEY')
-# openai.api_key = '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'
 video_id = sys.argv[1]
 audio_file_path = os.path.join(os.getcwd(), 'tmp', video_id + '.m4a')
 
