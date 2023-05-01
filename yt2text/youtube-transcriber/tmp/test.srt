@@ -1,0 +1,15 @@
+1
+00:00:00,000 --> 00:00:06,600
+Hey what's up it's Takei here, welcome back to my weekly vlog.
+
+2
+00:00:06,600 --> 00:00:13,880
+So we've got lots of updates on the Inkdrop for Mobile version 5, so let's get started.
+
+3
+00:00:13,880 --> 00:00:17,160
+First one is Solarize Dark Theme.
+
+4
+00:00:17,160 --> 00:00:23,320
+This is a green UI theme originally designed for the terminal.
