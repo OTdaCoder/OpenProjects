@@ -6,11 +6,10 @@ video_id = sys.argv[1]
 audio_file_path = os.path.join(os.getcwd(), 'tmp', video_id + '.m4a')
 
 audio_file = open(audio_file_path, 'rb')
-# transcript = openai.Audio.transcribe("whisper-1", audio_file)
 transcript = openai.Audio.transcribe(
     file=audio_file,
     model="whisper-1",
     response_format="srt",
-    primpt='Im Learning to become a programmer'
+    prompt='Im Learning to become a programmer'
 )
-print(audio_file)
+print(transcript)
