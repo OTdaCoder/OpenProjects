@@ -2,11 +2,11 @@ import React , { useEffect, useRef } from 'react';
 import { styled } from '@stitches/react';
 import { Box } from './box';
 
-type Props ={
+type Props = {
     children: string | undefined
 }
 
-export const Output : React.FC<Props> = ({children} ) => {
+export const Output : React.FC<Props> = ({ children }) => {
     const refBox = useRef <HTMLDivElement>(null)
 
     useEffect(() => {

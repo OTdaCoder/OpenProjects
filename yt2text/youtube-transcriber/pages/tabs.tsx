@@ -1,18 +1,17 @@
-import * as Tabs from '@radix-ui/react-tabs';
-import { styled } from '@stitches/react';
+import * as Tabs from '@radix-ui/react-tabs'
+import { styled } from '@stitches/react'
 
 export const TabsRoot = styled(Tabs.Root, {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '1.5em',
-  minHeight: 0
-});
+  marginTop: '1.5em'
+})
 
 export const TabsList = styled(Tabs.List, {
   flexShrink: 0,
   display: 'flex',
-  borderBottom: `1px solid $gray400`,
-});
+  borderBottom: `1px solid $gray400`
+})
 
 export const TabsTrigger = styled(Tabs.Trigger, {
   all: 'unset',
@@ -32,18 +31,16 @@ export const TabsTrigger = styled(Tabs.Trigger, {
   '&:hover': { color: '$purple600' },
   '&[data-state="active"]': {
     color: '$purple600',
-    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor',
+    boxShadow: 'inset 0 -1px 0 0 currentColor, 0 1px 0 0 currentColor'
   }
-});
+})
 
 export const TabsContent = styled(Tabs.Content, {
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: 0,
   flexGrow: 1,
   paddingTop: 1,
   backgroundColor: 'white',
   borderBottomLeftRadius: 6,
   borderBottomRightRadius: 6,
-  outline: 'none'
-});
+  outline: 'none',
+  overflow: 'hidden'
+})
