@@ -10,5 +10,6 @@ export default function GET(
     response.status(400).json({ error: 'Invalid request' })
     return
   }
-  console.log ('Video ID:', video_id)
+  console.log('Video ID:', video_id)
+  response.json({ ok: true, videoId: video_id })
 }
