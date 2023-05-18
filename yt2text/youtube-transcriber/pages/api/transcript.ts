@@ -19,3 +19,5 @@ export default function GET(
   ])
   transferChildProcessOutput(cmd, response)
 }
+
+// Test
