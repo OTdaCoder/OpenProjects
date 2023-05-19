@@ -1,8 +1,6 @@
-import { request } from 'http'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { spawn } from 'child_process'
 import path from 'path'
-import Script from 'next/script'
 import { transferChildProcessOutput } from '../../utils/shell'
 
 export default function GET(
@@ -14,7 +12,8 @@ export default function GET(
     response.status(400).json({ error: 'Invalid request' })
     return
   }
-  console.log('Video ID:', video_id)
+
+  console.log('video ID:', video_id)
   const cmd = spawn(path.join(process.cwd(), 'scripts/download-audio.sh'), [
     video_id || ''
   ])

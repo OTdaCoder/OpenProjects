@@ -12,12 +12,10 @@ export default function GET(
     response.status(400).json({ error: 'Invalid request' })
     return
   }
+
   console.log('video ID:', video_id)
-  const cmd = spawn('python3', [
-    path.join(process.cwd(), 'scripts/transcribe.py'),
-    video_id || ''
-  ])
+  const cmd = spawn(
+    'python3',
+    [path.join(process.cwd(), 'scripts/transcribe.py'), video_id || ''])
   transferChildProcessOutput(cmd, response)
 }
-
-// Test

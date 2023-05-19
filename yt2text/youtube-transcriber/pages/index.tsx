@@ -1,14 +1,16 @@
 import Head from 'next/head'
+import { styled } from '../stitches.config'
 import { Box } from '../components/box'
 import { Output } from '../components/output'
+import { VideoForm } from '../components/video-form'
 import {
   TabsContent,
   TabsRoot,
   TabsList,
   TabsTrigger
 } from '../components/tabs'
-import { VideoForm } from '../components/video-form'
-import { styled } from '../stitches.config'
+import { useState } from 'react'
+import { extractVideoIdFromUrl, processVideo } from '../utils/api-client'
 
 const Text = styled('p', {
   fontFamily: '$system',
@@ -18,7 +20,6 @@ const Text = styled('p', {
 const Container = styled('div', {
   display: 'flex',
   flexDirection: 'column',
-  // flexWrap: 'nowrap',
   height: '100vh',
   marginY: 0,
   marginX: 'auto',
@@ -28,7 +29,7 @@ const Container = styled('div', {
   variants: {
     size: {
       1: {
-        maxWidth: '300px'
+        maxWidth: '30px'
       },
       2: {
         maxWidth: '585px'
@@ -41,6 +42,31 @@ const Container = styled('div', {
 })
 
 export default function Home() {
+  const [isProcessing, setProcessing] = useState(false)
+  const [progressOutput, setProgressOutput] = useState('')
+  const [activeTab, setActiveTab] = useState('progress')
+  const [resultTranscript, setResultTranscript] = useState('')
+
+  const handleStartProcessing = async (videoUrl: string) => {
+    const videoId = extractVideoIdFromUrl(videoUrl)
+    if (typeof videoId === 'string') {
+      setResultTranscript('')
+      setProcessing(true)
+
+      const transcriptInJapanese = await processVideo(videoId, message => {
+        setProgressOutput(prev => prev + message)
+      })
+      if (transcriptInJapanese) {
+        setActiveTab(transcriptInJapanese)
+      }
+
+      setProcessing(false)
+      setActiveTab('result')
+    } else {
+      alert('Invalid URL')
+    }
+  }
+  
   return (
     <Box css={{ paddingY: '$6' }}>
       <Head>
@@ -48,17 +74,20 @@ export default function Home() {
       </Head>
       <Container size={{ '@initial': '1', '@bp1': '2' }}>
         <Text as="h1">Youtube Transcription &amp; Japanese Translation</Text>
-        <VideoForm />
-        <TabsRoot defaultValue="progress">
+        <VideoForm
+          onSubmit={handleStartProcessing}
+          isProcessing={isProcessing}
+        />
+        <TabsRoot value={activeTab} onValueChange={setActiveTab}>
           <TabsList aria-label="Output">
             <TabsTrigger value="progress">Progress</TabsTrigger>
             <TabsTrigger value="result">Result</TabsTrigger>
           </TabsList>
           <TabsContent value="progress">
-            <Output>{'Progress will go here '.repeat(100)}</Output>
+            <Output>{progressOutput}</Output>
           </TabsContent>
           <TabsContent value="result">
-            <Output>{'Result will go here '.repeat(10)}</Output>
+            <Output>{resultTranscript}</Output>
           </TabsContent>
         </TabsRoot>
       </Container>

@@ -4,7 +4,8 @@ import { styled } from '@stitches/react'
 export const TabsRoot = styled(Tabs.Root, {
   display: 'flex',
   flexDirection: 'column',
-  marginTop: '1.5em'
+  marginTop: '1.5em',
+  minHeight: 0
 })
 
 export const TabsList = styled(Tabs.List, {
@@ -36,11 +37,13 @@ export const TabsTrigger = styled(Tabs.Trigger, {
 })
 
 export const TabsContent = styled(Tabs.Content, {
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: 0,
   flexGrow: 1,
   paddingTop: 1,
   backgroundColor: 'white',
   borderBottomLeftRadius: 6,
   borderBottomRightRadius: 6,
   outline: 'none',
-  overflow: 'hidden'
 })
