@@ -57,7 +57,7 @@ export default function Home() {
         setProgressOutput(prev => prev + message)
       })
       if (transcriptInJapanese) {
-        setActiveTab(transcriptInJapanese)
+        setResultTranscript(transcriptInJapanese)
       }
 
       setProcessing(false)

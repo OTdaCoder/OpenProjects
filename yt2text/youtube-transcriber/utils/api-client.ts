@@ -14,14 +14,14 @@ export function extractVideoIdFromUrl(url: string) {
     callback('\nTranscribing audio. It takes a while...\n')
     const srt = await transcribe(videoId, callback)
   
-    // if (srt) {
-    //   callback('\nTranslating text...\n')
-    //   const result = await translate(srt, callback)
-    //   callback('\nDone!\n')
-    //   return result
-    // }
+    if (srt) {
+      callback('\nTranslating text...\n')
+      const result = await translate(srt, callback)
+      callback('\nDone!\n')
+      return result
+    }
   
-    // return false
+    return false
     return srt
   }
   

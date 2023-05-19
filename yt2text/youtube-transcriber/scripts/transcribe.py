@@ -9,7 +9,7 @@ audio_file = open(audio_file_path, 'rb')
 transcript = openai.Audio.transcribe(
     file=audio_file,
     model="whisper-1",
-    response_format="srt",
+    response_format='srt',
     prompt=('Im Learning to become a programmer')
 )
 print(transcript)
