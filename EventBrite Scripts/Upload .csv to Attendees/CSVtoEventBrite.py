@@ -4,7 +4,6 @@ import json
 
 def upload_attendees(api_key, event_id, csv_file):
     url = f"https://www.eventbriteapi.com/v3/events/{event_id}/attendees/token={api_key}"
-    # https://www.eventbriteapi.com/v3/events/643107861927/attendees/
 
     headers = {
         "Authorization": f"Bearer {api_key}",
@@ -52,6 +51,6 @@ api_key = "API_KEY"
 event_id = "EVENT_ID"
 
 # Replace with the path to your attendee CSV file
-csv_file = "URGPMRegistrations2.csv"
+csv_file = "Path/To/File_Name.CSV"
 
 upload_attendees(api_key, event_id, csv_file)
